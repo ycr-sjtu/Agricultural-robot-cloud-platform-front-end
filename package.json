@@ -1,0 +1,21 @@
+{
+  "name": "nj_test_vue",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --mode development",
+    "build": "vite build --mode production",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^1.3.3",
+    "element-plus": "^2.2.30",
+    "vue": "^3.2.45",
+    "vue-baidu-map-3x": "^1.0.29"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.0.0",
+    "vite": "^4.1.0"
+  }
+}
