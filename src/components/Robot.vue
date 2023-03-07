@@ -34,11 +34,19 @@
         </el-table-column>
       </el-table>
     </div>
-    <baidu-map class="bm-view" :center="center" :zoom="zoom" :scroll-wheel-zoom="true" mapType="BMAP_SATELLITE_MAP"
+    <div class="content-right">
+      <baidu-map class="bm-view" :center="center" :zoom="zoom" :scroll-wheel-zoom="true" mapType="BMAP_SATELLITE_MAP"
       @ready="handler">
       <bm-point-collection :points="points" shape="BMAP_POINT_SHAPE_CIRCLE" color="red" size="BMAP_POINT_SIZE_NORMAL"
         @click="clickHandler"></bm-point-collection>
     </baidu-map>
+    <el-carousel :interval="1000" :autoplay="false" type="card" height="200px">
+    <el-carousel-item v-for="url in url_list" :key="url">
+      <el-image style="width: 400px; height: 200px" :src="url" fit="contain" />
+    </el-carousel-item>
+  </el-carousel>
+    </div>
+    
   </div>
 
 </template>
@@ -46,6 +54,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { getList, save, remove } from '@/api/robot';
+import { InfoFilled } from '@element-plus/icons-vue'
 
 onMounted(() => {
   fetchData();
@@ -69,10 +78,17 @@ const onSubmit = () => {
 }
 
 const tableData = ref([]);
+const url_list = ref([]);
 
 const fetchData = () => {
   getList().then(response => {
     tableData.value = response.data;
+    for (let i in tableData.value) {
+      if (tableData.value[i].url != null && tableData.value[i].url != '') {
+        url_list.value.push(tableData.value[i].url);
+      }
+    }
+    console.log('url_list = ', url_list.value);
   });
 };
 
