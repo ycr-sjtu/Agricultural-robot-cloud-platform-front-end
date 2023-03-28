@@ -14,13 +14,18 @@
         </el-form-item>
       </el-form>
       <el-table class="table" :data="tableData" stripe>
-        <el-table-column prop="id" label="ID" align="center" />
+        <!-- <el-table-column prop="id" label="ID" align="center" />
         <el-table-column prop="category" label="类别" align="center" />
-        <el-table-column prop="robotNumber" label="机器编号" align="center" />
+        <el-table-column prop="robotNumber" label="机器编号" align="center" /> -->
         <el-table-column label="GPS坐标" align="center">
           <el-table-column prop="lng" label="经度" align="center" />
           <el-table-column prop="lat" label="纬度" align="center" />
         </el-table-column>
+        <el-table-column label="频率" align="center">
+          <el-table-column prop="freq1" label="频率1" align="center" />
+          <el-table-column prop="freq2" label="频率2" align="center" />
+        </el-table-column>
+        <el-table-column prop="vel" label="速度" align="center" />
         <el-table-column prop="time" label="记录时间" align="center" />
         <el-table-column fixed="right" label="操作" align="center">
           <template #default="scope">
