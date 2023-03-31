@@ -13,6 +13,7 @@
           <el-button type="primary" @click="onSubmit">提交</el-button>
         </el-form-item>
       </el-form>
+
       <el-table class="table" :data="tableData" stripe>
         <!-- <el-table-column prop="id" label="ID" align="center" />
         <el-table-column prop="category" label="类别" align="center" />
@@ -38,28 +39,71 @@
           </template>
         </el-table-column>
       </el-table>
+
+      <el-pagination class="page" v-model:current-page="pageNum" v-model:page-size="pageSize"
+        :page-sizes="[10, 20, 50, 100]" background :total="total" layout="total, sizes, prev, pager, next, jumper"
+        @size-change="handleSizeChange" @current-change="handleCurrentChange" />
+
     </div>
+
     <div class="content-right">
       <baidu-map class="bm-view" :center="center" :zoom="zoom" :scroll-wheel-zoom="true" mapType="BMAP_SATELLITE_MAP"
-      @ready="handler">
-      <bm-point-collection :points="points" shape="BMAP_POINT_SHAPE_CIRCLE" color="red" size="BMAP_POINT_SIZE_NORMAL"
-        @click="clickHandler"></bm-point-collection>
-    </baidu-map>
-    <el-carousel :interval="1000" :autoplay="false" type="card" height="200px">
-    <el-carousel-item v-for="url in url_list" :key="url">
-      <el-image style="width: 400px; height: 200px" :src="url" fit="contain" />
-    </el-carousel-item>
-  </el-carousel>
+        @ready="handler">
+        <bm-point-collection :points="points" shape="BMAP_POINT_SHAPE_CIRCLE" color="red" size="BMAP_POINT_SIZE_NORMAL"
+          @click="clickHandler"></bm-point-collection>
+      </baidu-map>
+      <el-carousel :interval="1000" :autoplay="false" type="card" height="200px">
+        <el-carousel-item v-for="url in url_list" :key="url">
+          <el-image style="width: 400px; height: 200px" :src="url" fit="contain" />
+        </el-carousel-item>
+      </el-carousel>
     </div>
-    
-  </div>
 
+  </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
 import { getList, save, remove } from '@/api/robot';
 import { InfoFilled } from '@element-plus/icons-vue'
+
+const pageNum = ref(1);
+const pageSize = ref(10);
+const total = ref(0);
+const category_2 = ref('未知类型');
+
+const tableData = ref([]);
+const url_list = ref([]);
+
+const fetchData = () => {
+  getList({
+      pageNum: pageNum.value,
+      pageSize: pageSize.value,
+      category_2: category_2.value
+    }
+  ).then(response => {
+    tableData.value = response.data.data.records;
+    total.value = response.data.data.total;
+    for (let i in tableData.value) {
+      if (tableData.value[i].url != null && tableData.value[i].url != '') {
+        url_list.value.push(tableData.value[i].url);
+      }
+    }
+    console.log('url_list = ', url_list.value);
+  });
+};
+
+const handleSizeChange = (val) => {
+  pageSize.value = val;
+  fetchData();
+  console.log(`${val} items per page`)
+}
+
+const handleCurrentChange = (val) => {
+  pageNum.value = val;
+  fetchData();
+  console.log(`current page: ${val}`)
+}
 
 onMounted(() => {
   fetchData();
@@ -82,20 +126,6 @@ const onSubmit = () => {
   });
 }
 
-const tableData = ref([]);
-const url_list = ref([]);
-
-const fetchData = () => {
-  getList().then(response => {
-    tableData.value = response.data;
-    for (let i in tableData.value) {
-      if (tableData.value[i].url != null && tableData.value[i].url != '') {
-        url_list.value.push(tableData.value[i].url);
-      }
-    }
-    console.log('url_list = ', url_list.value);
-  });
-};
 
 const handleDelete = (id) => {
   remove(id).then(response => {
@@ -139,6 +169,15 @@ const addPoints = () => {
 .content {
   display: flex;
   flex-direction: row;
+}
+
+.content-left {
+  width: 3000px;
+}
+
+.page {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .table {
