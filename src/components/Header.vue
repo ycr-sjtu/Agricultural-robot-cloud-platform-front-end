@@ -1,0 +1,35 @@
+<template>
+  <div style="height:80px;line-height: 80px;border-bottom: 5px solid #2376b7;display:flex">
+    <div style="width: 200px; padding-left: 30px;font-weight: bold;color: cornflowerblue">后台管理</div>
+    <div style="flex: 1;"></div>
+
+    <div style="width: 100px;padding-top: 20px">
+      <el-dropdown>
+        <div>
+        <el-avatar :icon="UserFilled" />
+        </div>
+
+<!--        使用了命名插槽-->
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item>个人信息</el-dropdown-item>
+            <el-dropdown-item>退出系统</el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
+    </div>
+
+  </div>
+</template>
+
+<script>
+import { UserFilled } from '@element-plus/icons-vue'
+export default {
+  name: "Header",
+  computed: {
+    UserFilled() {
+      return UserFilled;
+    }
+  },
+}
+</script>

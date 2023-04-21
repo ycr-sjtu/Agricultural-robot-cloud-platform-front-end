@@ -1,11 +1,16 @@
-<script setup>
-import Robot from './components/Robot.vue'
-</script>
-
 <template>
-  <Robot />
+  <div>
+    <router-view/>
+  </div>
 </template>
 
-<style scoped>
+<style>
 
 </style>
+
+<script>
+export default {
+  name: 'App',
+}
+</script>
+
