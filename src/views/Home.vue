@@ -1,5 +1,5 @@
 <template>
-  <div class="dd">
+  <div class="ddd">
     <el-row style="display: flex;flex-direction: row;justify-content: space-around">
       <el-card :body-style="{ padding: '0px' }" style="width: 600px">
         <el-carousel height="700px">
@@ -46,7 +46,7 @@ const carouseData = [
 const currentDate = ref(new Date());
 </script>
 <style scoped>
-.dd {
+.ddd {
   margin-top: 40px;
 }
 
