@@ -25,7 +25,7 @@
 import { ref, onMounted } from "vue";
 import { getList} from "@/api/robot";
 
-const pageNum = ref(1);
+const pageNum = ref(12);
 const pageSize = ref(50);
 const total = ref(0);
 const category_2 = ref("未知类型");

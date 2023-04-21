@@ -66,6 +66,7 @@ const currentDate = ref(new Date());
 <style scoped>
 .ddd {
   margin-top: 40px;
+  margin-left: 20px;
 }
 
 .time {
