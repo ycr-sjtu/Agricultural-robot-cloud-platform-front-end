@@ -1,6 +1,10 @@
 <template>
   <div style="height:80px;line-height: 80px;border-bottom: 5px solid #2376b7;display:flex">
-    <div style="width: 200px; padding-left: 30px;font-weight: bold;color: cornflowerblue">后台管理</div>
+    <div style="height: 80px;text-align: center;line-height: 60px">
+      <img src="../assets/logo.png" alt="" style="width:200px; position: relative; top:12px">
+    </div>
+    
+    <div style="width: 300px; padding-left: 30px;font-weight: bold;color: cornflowerblue">智慧农场全程全面管控云平台</div>
     <div style="flex: 1;"></div>
 
     <div style="width: 100px;padding-top: 20px">
