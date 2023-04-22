@@ -1,14 +1,15 @@
 <template>
   <div style="display: flex;flex-direction: column;">
-  <div class="content">
+    <div class="content">
     <baidu-map
       class="bm-view"
       :center="center"
       :zoom="zoom"
       :scroll-wheel-zoom="true"
-      mapType="BMAP_SATELLITE_MAP"
+      mapType="BMAP_HYBRID_MAP"
       @ready="handler"
     >
+      <bm-scale anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-scale>
       <bm-point-collection
         :points="points"
         shape="BMAP_POINT_SHAPE_CIRCLE"
@@ -22,8 +23,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import {ref, onMounted} from "vue";
 import { getList} from "@/api/robot";
+import map from "@/views/Map.vue";
 
 const pageNum = ref(12);
 const pageSize = ref(50);
@@ -32,6 +34,7 @@ const category_2 = ref("未知类型");
 
 const tableData = ref([]);
 
+//获取最大的pageNum
 const fetchData = () => {
   getList({
     pageNum: pageNum.value,
@@ -51,6 +54,7 @@ const gps = ref({
   lng: "",
   lat: "",
 });
+
 const center = ref({ lng: 0, lat: 0 });
 const zoom = ref(3);
 
@@ -67,6 +71,7 @@ const clickHandler = (e) => {
   alert(`单击点的坐标为：${e.point.lng}，${e.point.lat}`);
 };
 
+//在地图上添加点
 const addPoints = () => {
   const pointAll = [];
   for (let i in tableData.value) {
@@ -74,6 +79,7 @@ const addPoints = () => {
   }
   points.value = pointAll;
 };
+
 </script>
 
 <style scoped>

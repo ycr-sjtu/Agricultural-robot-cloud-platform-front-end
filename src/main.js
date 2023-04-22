@@ -6,10 +6,6 @@ import 'element-plus/dist/index.css'
 import BaiduMap from 'vue-baidu-map-3x'
 import "@/assets/globle.css"
 
-
-// import axios from 'axios'
-// axios.defaults.baseURL = '/api';
-
 const app = createApp(App);
 
 app.use(router).use(ElementPlus).use(BaiduMap, {

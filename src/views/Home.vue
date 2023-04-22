@@ -11,7 +11,7 @@
     </el-col>
   </el-row>
   
-    <el-row style="display: flex;flex-direction: row;justify-content: space-around">
+    <el-row style="display: flex;flex-direction: row; justify-content: space-around">
       <el-col :span="12">
       <el-card :body-style="{ padding: '0px' }" style="width: 800px">
         <el-carousel height="700px">

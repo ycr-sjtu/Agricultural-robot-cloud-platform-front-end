@@ -76,7 +76,6 @@ const fetchData = () => {
         url_list.value.push(tableData.value[i].url);
       }
     }
-    console.log('url_list = ', url_list.value);
   });
 };
 

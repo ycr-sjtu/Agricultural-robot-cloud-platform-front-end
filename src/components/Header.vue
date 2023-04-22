@@ -16,8 +16,7 @@
 <!--        使用了命名插槽-->
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item>个人信息</el-dropdown-item>
-            <el-dropdown-item>退出系统</el-dropdown-item>
+            <el-dropdown-item @click="sd">退出系统</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -35,5 +34,10 @@ export default {
       return UserFilled;
     }
   },
+  methods: {
+    sd(){
+      this.$router.push('/login');
+    }
+  }
 }
 </script>

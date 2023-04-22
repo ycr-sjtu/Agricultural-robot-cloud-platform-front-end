@@ -16,7 +16,7 @@ export default defineConfig(({ mode, command }) => {
     plugins: [vue()],
     // 跨域
     server: {
-      port: '5173',
+      port: '8888',
       proxy: {
         '/api': {
           target: env.VITE_BASE_URL,

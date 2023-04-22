@@ -13,7 +13,7 @@
         <el-icon><Promotion /></el-icon>
         <el-link v-if="!isCollapse" href="http://hebei.nongjihuiyan.com/Home/Index">全国农机化信息服务平台</el-link>
       </el-menu-item>
-      <el-sub-menu index="/2">
+      <el-sub-menu index="2">
         <template #title>
           <el-icon><Expand /></el-icon>
           <span>田间蔬菜移栽物联网监控系统</span>
