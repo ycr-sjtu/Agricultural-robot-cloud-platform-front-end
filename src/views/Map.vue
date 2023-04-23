@@ -31,13 +31,10 @@ const pageSize = ref(50);
 const total = ref(0);
 const category_2 = ref("未知类型");
 const tableData = ref([]);
-const gps = ref({
-  lng: "",
-  lat: "",
-});
 const center = ref({lng: 0, lat: 0});
 const zoom = ref(3);
 const points = ref([]);
+const count = ref(0);
 
 //获取最大的pageNum
 const fetchData = () => {
@@ -49,17 +46,13 @@ const fetchData = () => {
     tableData.value = response.data.data.records;
     total.value = response.data.data.total;
     pageNum.value = Math.ceil(total.value / pageSize.value);
+    console.log(response);
+    count.value++;
+    if (count.value === 2) {
+      points.value = tableData.value.map(item => ({lng: item.lng, lat: item.lat}));
+      console.log(points.value);
+    }
   });
-};
-
-// 在地图上添加点
-const addPoints = () => {
-  const pointAll = [];
-  for (let i in tableData.value) {
-    pointAll.push({lng: tableData.value[i].lng, lat: tableData.value[i].lat});
-  }
-  points.value = pointAll;
-  console.log(points.value);
 };
 
 onMounted(() => {
@@ -67,12 +60,11 @@ onMounted(() => {
 });
 
 
-const handler = ({}) => {
+const handler = () => {
+  fetchData();
   center.value.lng = tableData.value[0].lng;
   center.value.lat = tableData.value[0].lat;
-  zoom.value = 15;
-  fetchData();
-  addPoints();
+  zoom.value = 7;
 };
 
 const clickHandler = (e) => {
@@ -82,7 +74,7 @@ const clickHandler = (e) => {
 
 <style scoped>
 .content {
-  margin: 50px;
+  margin: 20px;
 }
 
 .bm-view {

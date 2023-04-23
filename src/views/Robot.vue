@@ -17,9 +17,9 @@
 
     <div class="table">
       <el-table :data="tableData" stripe>
-        <!-- <el-table-column prop="id" label="ID" align="center" />
-          <el-table-column prop="category" label="类别" align="center" />
-          <el-table-column prop="robotNumber" label="机器编号" align="center" /> -->
+<!--<el-table-column prop="id" label="ID" align="center" />-->
+<!--          <el-table-column prop="category" label="类别" align="center" />-->
+<!--          <el-table-column prop="robotNumber" label="机器编号" align="center" />-->
         <el-table-column label="GPS坐标" align="center">
           <el-table-column prop="lng" label="经度" align="center" />
           <el-table-column prop="lat" label="纬度" align="center" />
@@ -76,6 +76,7 @@ const fetchData = () => {
         url_list.value.push(tableData.value[i].url);
       }
     }
+    console.log('url_list = ', url_list.value);
   });
 };
 
