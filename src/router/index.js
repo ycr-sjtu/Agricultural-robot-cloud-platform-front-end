@@ -18,11 +18,6 @@ const routes = [
         component: () => import("@/views/Robot.vue"),
       },
       {
-        path: 'setting',
-        name: 'Setting',
-        component: () => import("@/views/Setting.vue"),
-      },
-      {
         path: 'map',
         name: 'Map',
         component: () => import("@/views/Map.vue"),
@@ -31,25 +26,27 @@ const routes = [
         path: 'agriculture',
         name: 'Agriculture',
         component: () => import("@/relevant/Agriculture.vue"),
-        redirect: "/home",
       },
       {
         path: 'cloud',
         name: 'Cloud',
         component: () => import("@/relevant/Cloud.vue"),
-        redirect: "/home",
       },
       {
         path: 'light',
         name: 'Light',
         component: () => import("@/relevant/Light.vue"),
-        redirect: "/home",
       },
       {
         path: 'visible',
         name: 'Visible',
         component: () => import("@/relevant/Visible.vue"),
-        redirect: "/home",
+      },
+      {
+        path: 'iframe/:url',
+        name: 'Iframe',
+        component: () => import("@/components/IframeWrapper.vue"),
+        props: route => ({ src: decodeURIComponent(route.params.url) })
       },
     ]
   },
