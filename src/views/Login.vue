@@ -27,14 +27,13 @@
 </template>
 
 <script>
-import {login} from '@/api/robot';
 import request from "@/utils/request.js";
 
 export default {
   name: "Login",
   data() {
     return {
-      form: {role: 1},
+      form: {},
       rules: {
         username: [
           {required: true, message: '请输入用户名', trigger: 'blur'},
@@ -48,7 +47,9 @@ export default {
   methods: {
     log() {
       request.post("/login", this.form).then(res => {
-          if (res.code === '0') {
+        console.log(res);
+        console.log("test");
+          if (res.data.code === '0') {
             this.$message({
               type: "success",
               message: "登录成功"
@@ -58,7 +59,7 @@ export default {
           } else {
             this.$message({
               type: "error",
-              message: res.msg,
+              message: res.data.msg,
             })
           }
         });

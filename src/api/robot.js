@@ -16,13 +16,6 @@ export function save(params) {
   })
 }
 
-export function login(params) {
-  return request({
-    url: 'login/',
-    method: 'post',
-    data: params
-  })
-}
 
 export function remove(id) {
   return request({
