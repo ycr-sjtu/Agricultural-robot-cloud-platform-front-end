@@ -5,7 +5,7 @@ const routes = [
     path: '/',
     name: 'Layout',
     component: () => import("@/layout/Layout.vue"),
-    redirect: "/home",
+    redirect: "/login",
     children: [
       {
         path: 'home',

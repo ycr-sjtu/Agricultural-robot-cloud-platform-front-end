@@ -47,22 +47,20 @@ export default {
   methods: {
     log() {
       request.post("/login", this.form).then(res => {
-        console.log(res);
-        console.log("test");
-          if (res.data.code === '0') {
-            this.$message({
-              type: "success",
-              message: "登录成功"
-            })
-            this.$router.push("/");  //登录成功之后进行页面的跳转，跳转到主页
+        if (res.data.code === '0') {
+          this.$message({
+            type: "success",
+            message: "登录成功"
+          })
+          this.$router.push("/home");  //登录成功之后进行页面的跳转，跳转到主页
 
-          } else {
-            this.$message({
-              type: "error",
-              message: res.data.msg,
-            })
-          }
-        });
+        } else {
+          this.$message({
+            type: "error",
+            message: res.data.msg,
+          })
+        }
+      });
     }
   }
 }
