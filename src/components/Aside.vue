@@ -44,10 +44,10 @@
           <span v-if="!isCollapse"> 智慧农场农机装备云管控平台</span>
       </el-menu-item>
 
-      <el-menu-item index="/light">
+      <!-- <el-menu-item index="/light">
         <el-icon><Promotion /></el-icon>
         <span v-if="!isCollapse">智能温室追光系统管控云平台</span>
-      </el-menu-item>
+      </el-menu-item> -->
     </el-menu>
   </div>
 </template>

@@ -1,0 +1,1 @@
+import{_ as r,o as t,c as s,a}from"./index-74d3516f.js";const c={name:"IframeWrapper",props:{src:{type:String,required:!0}}},o={class:"iframe-wrapper"},_=["src"];function n(p,i,e,d,f,l){return t(),s("div",o,[a("iframe",{src:e.src,style:{width:"100%",height:"100%"}},null,8,_)])}const u=r(c,[["render",n]]);export{u as default};

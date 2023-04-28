@@ -1,0 +1,1 @@
+import{r}from"./request-8ee4a93e.js";function o(t){return r({url:"robot/list",method:"get",params:t})}function s(t){return r({url:"robot/",method:"post",data:t})}function u(t){return r({url:"robot/"+t,method:"delete"})}export{o as g,u as r,s};

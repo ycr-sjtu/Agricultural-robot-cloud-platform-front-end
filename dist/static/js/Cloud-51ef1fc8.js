@@ -1,0 +1,1 @@
+import{_ as t}from"./index-74d3516f.js";const o={name:"Cloud",created(){const e=encodeURIComponent("http://106.15.233.31/home.php");this.$router.push({name:"Iframe",params:{url:e}})}};function r(e,n,s,a,p,c){return null}const m=t(o,[["render",r]]);export{m as default};
